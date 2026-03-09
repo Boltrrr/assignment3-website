@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+
+  background: #121212;
+  color: #e4e4e4;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* AI-assisted: ChatGPT suggested this translucent navbar */
+header {
+  border-bottom: 1px solid #2a2a2a;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.logo img {
+  height: 40px;
+  display: block;
+}
+
+.hero {
+  width: 100%;
+  min-height: 60vh;
+
+  background-image: url("images/hero.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 60px 20px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero {
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+/* Flexbox */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+header nav, main, footer {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}
+
+ul a {
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+ul a:hover, ul a[aria-current="page"] {
+  background: #2a2a2a;
+}
+
+main {
+  padding: 32px 0 56px;
+}
+
+section {
+  margin-bottom: 28px;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+/* Grid requirement */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* AI-assisted: ChatGPT suggested this visual change */
+/* Card styling */
+.card {
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+/* Form styling */
+form {
+  max-width: 560px;
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+form div {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+
+  background: #121212;
+  color: #e4e4e4;
+  border: 1px solid #3a3a3a;
+
+  font: inherit;
+}
+
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #121212;
+
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+footer {
+  border-top: 1px solid #2a2a2a;
+  padding: 16px 0;
+}
+
+/* AI-assisted: ChatGPT suggested this layout change */
+@media (max-width: 800px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr; /* stacks cards */
+  }
+
+  .hero {
+    min-height: 45vh;
+    padding: 48px 16px;
+  }
+}
