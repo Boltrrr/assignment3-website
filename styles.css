@@ -34,7 +34,7 @@ header {
 
 .hero {
   width: 100%;
-  min-height: 60vh;
+  min-height: 80vh;
 
   background-image: url("images/hero.png");
 
@@ -200,6 +200,31 @@ button {
 
 button:hover {
   opacity: 0.9;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  border: none;
+  background: none;
+
+  padding: 0;
+  cursor: pointer;
+
+  display: none;
+  z-index: 999;
+}
+
+#back-to-top img {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+#back-to-top img:hover {
+  opacity: 0.50;
 }
 
 footer {
