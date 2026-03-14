@@ -181,7 +181,7 @@ function renderFeatures(featureArray) {
   });
 }
 
-
+//Dynamic filtering/search
 let selectedCategory = "All";
 let searchTerm = "";
 
@@ -225,3 +225,61 @@ if (featureSearch) {
     filterFeatures();
   });
 }
+
+
+//AI-assisted: Used ChatGPT to help with RAWG API fetch logic
+//Public API
+async function loadFeaturedGame() {
+  const gameBox = document.getElementById("game-api");
+
+  if (!gameBox) {
+    return;
+  }
+
+  const apiKey = "87441e7412a049eea923f65d452e4095";
+
+  gameBox.innerHTML = "<p>Loading featured game...</p>";
+
+  //Fetching
+  try {
+    const response = await fetch(
+      `https://api.rawg.io/api/games?key=${apiKey}&page_size=20`
+    );
+
+    //Error response
+    if (!response.ok) {
+      throw new Error("Game request failed.");
+    }
+
+    const data = await response.json();
+    const games = data.results;
+
+    if (!games || games.length === 0) {
+      throw new Error("No games returned.");
+    }
+
+    //Generate random
+    const randomIndex = Math.floor(Math.random() * games.length);
+    const game = games[randomIndex];
+
+    //Retrieve info
+    const genres = game.genres.map(function (genre) {
+      return genre.name;
+    }).join(", ");
+
+    gameBox.innerHTML = `
+      <article class="game-api-card">
+        <img src="${game.background_image}" alt="${game.name} cover art">
+        <h3>${game.name}</h3>
+        <p><strong>Released:</strong> ${game.released || "Unknown"}</p>
+        <p><strong>Genres:</strong> ${genres || "Unknown"}</p>
+        <p><strong>RAWG Rating:</strong> ${game.rating || "N/A"}</p>
+      </article>
+    `;
+  } catch (error) {
+    gameBox.innerHTML =
+      "<p>Sorry, the featured game could not be loaded right now.</p>";
+  }
+}
+
+loadFeaturedGame();
