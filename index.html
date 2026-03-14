@@ -41,6 +41,30 @@
 
       <section>
         <h2>Game Features</h2>
+
+        <div class="feature-controls">
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-category="All">All</button>
+            <button class="filter-btn" data-category="Exploration">
+              Exploration
+            </button>
+            <button class="filter-btn" data-category="Crafting">
+              Crafting
+            </button>
+            <button class="filter-btn" data-category="Combat">Combat</button>
+            <button class="filter-btn" data-category="Survival">
+              Survival
+            </button>
+          </div>
+
+          <input
+            type="text"
+            id="feature-search"
+            placeholder="Search features..."
+            aria-label="Search game features"
+          />
+        </div>
+
         <div id="feature-list" class="grid-3"></div>
       </section>
     </main>

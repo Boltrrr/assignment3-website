@@ -155,6 +155,11 @@ function renderFeatures(featureArray) {
 
   featureList.innerHTML = "";
 
+  if (featureArray.length === 0) {
+    featureList.innerHTML = "<p>No features match your search.</p>";
+    return;
+  }
+
   featureArray.forEach(function (feature) {
     const featureCard = document.createElement("article");
     featureCard.classList.add("card");
@@ -176,5 +181,47 @@ function renderFeatures(featureArray) {
   });
 }
 
-//Call the function
+
+let selectedCategory = "All";
+let searchTerm = "";
+
+function filterFeatures() {
+  let filteredFeatures = features.filter(function (feature) {
+    const matchesCategory =
+      selectedCategory === "All" || feature.category === selectedCategory;
+
+    const matchesSearch =
+      feature.title.toLowerCase().includes(searchTerm) ||
+      feature.category.toLowerCase().includes(searchTerm) ||
+      feature.description.toLowerCase().includes(searchTerm);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  renderFeatures(filteredFeatures);
+}
+
 renderFeatures(features);
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const featureSearch = document.getElementById("feature-search");
+
+filterButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    selectedCategory = button.dataset.category;
+
+    filterButtons.forEach(function (btn) {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    filterFeatures();
+  });
+});
+
+if (featureSearch) {
+  featureSearch.addEventListener("input", function () {
+    searchTerm = featureSearch.value.trim().toLowerCase();
+    filterFeatures();
+  });
+}

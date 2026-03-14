@@ -289,6 +289,41 @@ button:hover {
   opacity: 0.50;
 }
 
+/*Dynamic filtering/search*/
+.feature-controls {
+  margin-bottom: 20px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.filter-btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2a2a2a;
+  color: #e4e4e4;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  opacity: 0.9;
+}
+
+.filter-btn.active {
+  background: #ffffff;
+  color: #121212;
+}
+
+#feature-search {
+  max-width: 320px;
+}
+
 footer {
   border-top: 1px solid #2a2a2a;
   padding: 16px 0;
