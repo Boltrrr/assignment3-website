@@ -14,6 +14,7 @@ const contactForm = document.getElementById("contact-form");
 
 //Hamburger button for mobile
 if (navToggle && navLinks) {
+
   navToggle.addEventListener("click", function () {
     navLinks.classList.toggle("open");
   });
@@ -48,6 +49,7 @@ if (backToTop) {
 
 //Accordion FAQ
 faqItems.forEach(function (item) {
+
   const question = item.querySelector(".faq-question");
 
   question.addEventListener("click", function () {
@@ -67,48 +69,73 @@ faqItems.forEach(function (item) {
 //Form validation
 if (contactForm) {
 
-  contactForm.addEventListener("submit", function (event) {
+  const name = document.getElementById("name");
+  const email = document.getElementById("email");
+  const message = document.getElementById("message");
+  const errors = contactForm.querySelectorAll(".error-message");
+  const success = document.getElementById("form-success");
 
-    event.preventDefault();
 
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const message = document.getElementById("message");
-
-    const errors = contactForm.querySelectorAll(".error-message");
-    const success = document.getElementById("form-success");
-
-    let valid = true;
-
-    errors.forEach(function(error){
-      error.textContent = "";
-    });
-
-    success.textContent = "";
-
+  function validateName() {
     if (name.value.trim() === "") {
       errors[0].textContent = "Please enter your name.";
-      valid = false;
+      return false;
     }
 
+    errors[0].textContent = "";
+    return true;
+  }
+
+
+  function validateEmail() {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email.value.trim() === "") {
+      errors[1].textContent = "Please enter your email address.";
+      return false;
+    }
 
     if (!emailPattern.test(email.value)) {
       errors[1].textContent = "Please enter a valid email address.";
-      valid = false;
+      return false;
     }
 
+    errors[1].textContent = "";
+    return true;
+  }
+
+
+  function validateMessage() {
     if (message.value.trim().length < 10) {
       errors[2].textContent = "Message must be at least 10 characters.";
-      valid = false;
+      return false;
     }
 
-    if (valid) {
-      success.textContent = "Thank you, we have received your message.";
+    errors[2].textContent = "";
+    return true;
+  }
+
+
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    success.textContent = "";
+
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isMessageValid = validateMessage();
+
+    if (isNameValid && isEmailValid && isMessageValid) {
+
+      success.textContent = "Thanks! We'll get back to you soon.";
       contactForm.reset();
     }
   });
+
+  name.addEventListener("input", validateName);
+  email.addEventListener("input", validateEmail);
+  message.addEventListener("input", validateMessage);
 }
+
 
 //Rendered features
 const features = [
@@ -147,6 +174,7 @@ const features = [
 
 //Dynamic content rendering
 function renderFeatures(featureArray) {
+
   const featureList = document.getElementById("feature-list");
 
   if (!featureList) {
@@ -159,6 +187,7 @@ function renderFeatures(featureArray) {
     featureList.innerHTML = "<p>No features match your search.</p>";
     return;
   }
+
 
   featureArray.forEach(function (feature) {
     const featureCard = document.createElement("article");
@@ -184,6 +213,7 @@ function renderFeatures(featureArray) {
 //Dynamic filtering/search
 let selectedCategory = "All";
 let searchTerm = "";
+
 
 function filterFeatures() {
   let filteredFeatures = features.filter(function (feature) {
@@ -262,6 +292,7 @@ async function loadFeaturedGame() {
     const randomIndex = Math.floor(Math.random() * games.length);
     const game = games[randomIndex];
 
+    
     //Retrieve info
     const genres = game.genres.map(function (genre) {
       return genre.name;
