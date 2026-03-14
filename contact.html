@@ -38,32 +38,28 @@
         <h2>Contact Form</h2>
 
         <!-- AI-assisted: Used ChatGPT to help with this form structure -->
-        <form action="contact.html" method="get">
+        <form id="contact-form">
           <div>
-            <label for="full-name">Full Name</label>
-            <input id="full-name" name="full-name" type="text" required />
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+            <small class="error-message"></small>
           </div>
 
           <div>
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
-          </div>
-
-          <div>
-            <label for="topic">Topic</label>
-            <select id="topic" name="topic">
-              <option value="general">General</option>
-              <option value="quote">Request a quote</option>
-              <option value="support">Support</option>
-            </select>
+            <input type="email" id="email" name="email" />
+            <small class="error-message"></small>
           </div>
 
           <div>
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <textarea id="message" name="message"></textarea>
+            <small class="error-message"></small>
           </div>
 
           <button type="submit">Submit</button>
+
+          <p id="form-success"></p>
         </form>
       </section>
     </main>

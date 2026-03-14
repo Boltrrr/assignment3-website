@@ -176,6 +176,20 @@ h2 {
   gap: 16px;
 }
 
+/*Form validation*/
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 4px;
+}
+
+#form-success {
+  color: #7dff7d;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
 /*AI-assisted: ChatGPT suggested this visual change*/
 /*Card styling*/
 .card {
