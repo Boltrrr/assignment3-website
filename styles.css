@@ -285,10 +285,6 @@ button:hover {
   display: block;
 }
 
-#back-to-top img:hover {
-  opacity: 0.50;
-}
-
 /*Dynamic filtering/search*/
 .feature-controls {
   margin-bottom: 20px;

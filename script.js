@@ -257,7 +257,6 @@ if (featureSearch) {
 }
 
 
-//AI-assisted: Used ChatGPT to help with RAWG API fetch logic
 //Public API
 async function loadFeaturedGame() {
   const gameBox = document.getElementById("game-api");
@@ -270,6 +269,7 @@ async function loadFeaturedGame() {
 
   gameBox.innerHTML = "<p>Loading featured game...</p>";
 
+  //AI-assisted: Used ChatGPT to help with RAWG API fetch logic
   //Fetching
   try {
     const response = await fetch(
@@ -292,12 +292,13 @@ async function loadFeaturedGame() {
     const randomIndex = Math.floor(Math.random() * games.length);
     const game = games[randomIndex];
 
-    
+
     //Retrieve info
     const genres = game.genres.map(function (genre) {
       return genre.name;
     }).join(", ");
 
+    //AI-assisted: Used ChatGPT to help with creating the structure  
     gameBox.innerHTML = `
       <article class="game-api-card">
         <img src="${game.background_image}" alt="${game.name} cover art">
