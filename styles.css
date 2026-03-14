@@ -16,7 +16,7 @@ body {
   margin: 0 auto;
 }
 
-/* AI-assisted: ChatGPT suggested this translucent navbar */
+/*AI-assisted: ChatGPT suggested this translucent navbar*/
 header {
   border-bottom: 1px solid #2a2a2a;
   position: sticky;
@@ -67,7 +67,54 @@ header {
   max-width: 700px;
 }
 
-/* Flexbox */
+/*Accordion FAQ*/
+.faq {
+  max-width: 800px;
+}
+
+.faq-item {
+  margin-bottom: 12px;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1e1e1e;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 16px;
+  background: #1e1e1e;
+  color: #e4e4e4;
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.faq-question:hover {
+  background: #2a2a2a;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 16px 16px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-answer a {
+  color: #7bd3ff;
+  text-decoration: underline;
+}
+
+.faq-answer a:hover {
+  color: #a8e6ff;
+}
+
+/*Flexbox*/
 nav {
   display: flex;
   align-items: center;
@@ -122,15 +169,15 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* Grid requirement */
+/*Grid requirement*/
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
-/* AI-assisted: ChatGPT suggested this visual change */
-/* Card styling */
+/*AI-assisted: ChatGPT suggested this visual change*/
+/*Card styling*/
 .card {
   background: #1e1e1e;
   border: 1px solid #2a2a2a;
@@ -138,7 +185,7 @@ h2 {
   padding: 16px;
 }
 
-/* Form styling */
+/*Form styling*/
 form {
   max-width: 560px;
   background: #1e1e1e;
@@ -202,6 +249,7 @@ button:hover {
   opacity: 0.9;
 }
 
+/*Back to top button*/
 #back-to-top {
   position: fixed;
   bottom: 24px;
@@ -232,7 +280,7 @@ footer {
   padding: 16px 0;
 }
 
-/* AI-assisted: ChatGPT suggested this layout change */
+/*AI-assisted: ChatGPT suggested this layout change*/
 @media (max-width: 768px) {
   nav {
     flex-wrap: wrap;

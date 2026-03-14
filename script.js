@@ -1,7 +1,13 @@
+//ISO-CORE JavaScript
+//Assignment 3 - IMD1005
+//Ryan Bolt - 2026
+
+//Constants
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const navLinkItems = document.querySelectorAll(".nav-links a");
 const backToTop = document.getElementById("back-to-top");
+const faqItems = document.querySelectorAll(".faq-item");
 
 //Hamburger button for mobile
 if (navToggle && navLinks) {
@@ -35,3 +41,20 @@ if (backToTop) {
   });
 
 }
+
+//Accordion FAQ
+faqItems.forEach(function (item) {
+  const question = item.querySelector(".faq-question");
+
+  question.addEventListener("click", function () {
+    const isOpen = item.classList.contains("active");
+
+    faqItems.forEach(function (faqItem) {
+      faqItem.classList.remove("active");
+    });
+
+    if (!isOpen) {
+      item.classList.add("active");
+    }
+  });
+});
